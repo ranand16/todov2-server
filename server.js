@@ -1,7 +1,7 @@
 var express = require('express');
 var app = express();
 var routes = require('./server/routes');
-// var bodyParser = require('body-parser');
+var bodyParser = require('body-parser');
 var config = require('./conf');
 var mongoose = require('mongoose');
 
@@ -15,8 +15,8 @@ mongoose.connect(config.database,{useMongoClient: true},function(err){
   }
 });
 
-// app.use(bodyParser.json());
-// app.use(bodyParser.urlencoded({extended:true}));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended:true}));
 
 routes(app);
 
