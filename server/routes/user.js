@@ -142,6 +142,27 @@ function createToken(user){
         //res.json(todos[0].data[0]); res.json(todos[0]); res.json(todos); console.log(todos);
       });
     });
+
+    // to edit your profile name and username
+    api.route('/editUser/:id1')
+    .put(function(req, res){
+      var userId = req.params.id1;
+      console.log(userId);
+      var username = req.body.newUsername;
+      var name = req.body.newName;
+      User.update({"_id": mongoose.Types.ObjectId(userId)},{$set :{"username": username, "name": name}},function(err, result){
+        if(err){
+          res.send("There was an error while updating your profile, Please try later!");
+          return;
+        }else{
+          res.json({
+            message: "Profile updated successfully!",
+            result: result
+          });
+        }
+      });
+    });
+    
     api.route('/:id1/:id2')
     .put(function(req,res){
       var id1 = req.params.id1;//id for the user
@@ -158,6 +179,7 @@ function createToken(user){
                 });
       });
     });
+
     api.route('/:id1')
     .put(function(req,res){
       var id1 = req.params.id1;//id for the particular task
@@ -180,7 +202,5 @@ function createToken(user){
     api.get('/me',function(req, res){
       res.json({resp:req.decoded});
     });//for getting the decoded as many times we want for aa particular user session
-
-
 
   module.exports = api;
