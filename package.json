@@ -4,7 +4,9 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "start": "NODE_PATH=$NODE_PATH:./src node server"
+    "deploy":"gcloud app deploy",
+    "start": "node server.js"
+    
   },
   "keywords": [],
   "author": "",

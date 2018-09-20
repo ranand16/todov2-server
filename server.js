@@ -2,18 +2,6 @@ var express = require('express');
 var app = express();
 var routes = require('./server/routes');
 var bodyParser = require('body-parser');
-var config = require('./conf');
-var mongoose = require('mongoose');
-
-mongoose.Promise = global.Promise;
-mongoose.connect(config.database,{useMongoClient: true},function(err){
-  if(err){
-    console.log("There is a connection error");
-  }
-  else{
-    console.log("connected to db");
-  }
-});
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));

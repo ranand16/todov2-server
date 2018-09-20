@@ -1,11 +1,20 @@
 var mongoose = require('mongoose');
-var User = require('./../models/user');
-
+var User = require('../models/user');
+var config = require('../../conf');
 var express = require('express');
 var secretKey = "its_really_very_secret";
 var api = express.Router();
-var bcrypt = require('bcrypt-nodejs');
 var jsonwebtoken = require('jsonwebtoken');
+
+// mongoose.MongoClient.Promise = global.Promise;
+mongoose.createConnection(config.database,{ useNewUrlParser: true }, function(err){
+  if(err){
+    console.log("There is a connection error");
+  }
+  else{
+    console.log("connected to db");
+  }
+});
 
 function createToken(user){
   var token = jsonwebtoken.sign({
@@ -62,7 +71,7 @@ function createToken(user){
     }).select('password').exec(function(err,user){
         if(err) throw err;
         if(!user){
-          res.send({message:"User doesnot exist!"});
+          res.send({message:"User doesnot exist!",code:"101"});
         }else if(user){
           var validPassword = user.comparePassword(req.body.password);
           if(!validPassword){
