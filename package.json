@@ -16,5 +16,8 @@
     "jsonwebtoken": "*",
     "mongoose": "^4.10.8",
     "bcrypt-nodejs": "*"
+  },
+  "engines": {
+    "node": "8.10.0"
   }
 }
