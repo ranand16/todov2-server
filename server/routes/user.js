@@ -6,8 +6,8 @@ var secretKey = "its_really_very_secret";
 var api = express.Router();
 var jsonwebtoken = require('jsonwebtoken');
 
-// mongoose.MongoClient.Promise = global.Promise;
-mongoose.createConnection(config.database,{ useNewUrlParser: true }, function(err){
+mongoose.Promise = global.Promise;
+mongoose.connect(config.database,{ useNewUrlParser: true }, function(err){
   if(err){
     console.log("There is a connection error");
   }
@@ -32,8 +32,11 @@ api.post('/signup',function(req,res){
     password: req.body.password,
     data:req.body.data
   });
+  console.log("user will bbe created \n");
+  console.log(user);
   user.save(function(err){
     if(err){
+      console.log("There was a faliure");
       res.json({failureMessage:"User Registration Failed"});
       return;
     }
