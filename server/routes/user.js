@@ -7,7 +7,7 @@ var api = express.Router();
 var jsonwebtoken = require('jsonwebtoken');
 
 mongoose.Promise = global.Promise;
-mongoose.connect(config.database,{ useNewUrlParser: true }, function(err){
+mongoose.connect(config.database,{ useMongoClient: true }, function(err){
   if(err){
     console.log("There is a connection error");
   }
