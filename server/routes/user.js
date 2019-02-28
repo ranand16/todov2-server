@@ -32,11 +32,8 @@ api.post('/signup',function(req,res){
     password: req.body.password,
     data:req.body.data
   });
-  console.log("user will bbe created \n");
-  console.log(user);
   user.save(function(err){
     if(err){
-      console.log("There was a faliure");
       res.json({failureMessage:"User Registration Failed"});
       return;
     }
@@ -46,10 +43,6 @@ api.post('/signup',function(req,res){
 
 api.get('/users',function(req, res){
   User.find({},function(err, users){
-    console.log("err");
-    console.log(err);
-    console.log("\n \n users \n\n");
-    console.log(users);
     if(err){
       res.send(err);
       return;
