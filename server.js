@@ -10,22 +10,22 @@ routes(app);
 
 var PORT = process.env.PORT || 3000;
 // var ip = process.env.IP || '0.0.0.0';
-// app.use(express.static('public'));
-// app.all('/*',function(req,res){
-//   res.send('\
-//     <!doctype html>\
-//     <html>\
-//       <head>\
-//           <base href="/">\
-//           <title></title\
-//       </head>\
-//       <body>\
-//         <div ui-view><h1></h1></div>\
-//         <script type="text/javascript" src="bundle.js"></script>\
-//       </body>\
-//     </html>\
-//     ');
-// });
+app.use(express.static('public'));
+app.all('/*',function(req,res){
+  res.send('\
+    <!doctype html>\
+    <html>\
+      <head>\
+          <base href="/">\
+          <title></title\
+      </head>\
+      <body>\
+        <div ui-view><h1></h1></div>\
+        <script type="text/javascript" src="public/bundle.js"></script>\
+      </body>\
+    </html>\
+    ');
+});
 app.listen(PORT, function(){
   console.log("Its running !! @ localhost:"+PORT);
 });
