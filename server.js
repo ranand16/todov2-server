@@ -21,7 +21,7 @@ app.all('/*',function(req,res){
       </head>\
       <body>\
         <div ui-view><h1></h1></div>\
-        <script type="text/javascript" src="public/bundle.js"></script>\
+        <script type="text/javascript" src="bundle.js"></script>\
       </body>\
     </html>\
     ');
