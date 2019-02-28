@@ -9,7 +9,7 @@ app.use(bodyParser.urlencoded({extended:true}));
 routes(app);
 
 var PORT = process.env.PORT || 8080;
-var ip = process.env.IP || '0.0.0.0';
+// var ip = process.env.IP || '0.0.0.0';
 // app.use(express.static('public'));
 // app.all('/*',function(req,res){
 //   res.send('\
@@ -26,6 +26,6 @@ var ip = process.env.IP || '0.0.0.0';
 //     </html>\
 //     ');
 // });
-app.listen(PORT,ip, function(){
+app.listen(PORT, function(){
   console.log("Its running !! @ localhost:"+PORT);
 });
