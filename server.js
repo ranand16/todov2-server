@@ -26,7 +26,7 @@ var PORT = process.env.PORT || 3000;
 app.use(express.static('public'));
 // to overcome the CORS error.
 app.all('/*', function(req, res){
-  res.sendFile('inndex.html', {root: __dirname });
+  res.sendFile('index.html', {root: __dirname });
 });
 // app.all('/*',function(req,res){
 //   res.send('\
