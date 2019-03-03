@@ -4,13 +4,6 @@ var routes = require('./server/routes');
 var bodyParser = require('body-parser');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
-
-routes(app);
-
-var PORT = process.env.PORT || 3000;
-// var ip = process.env.IP || '0.0.0.0';
-app.use(express.static('public'));
-// to overcome the CORS error.
 app.use(function (req, res, next) {
   // Website you wish to allow to connect // * for all the websites
   res.header("Access-Control-Allow-Origin", "*");
@@ -25,6 +18,13 @@ app.use(function (req, res, next) {
   // Pass to next layer of middleware
   next();
 });
+routes(app);
+
+var PORT = process.env.PORT || 3000;
+// var ip = process.env.IP || '0.0.0.0';
+app.use(express.static('public'));
+// to overcome the CORS error.
+
 app.all('/*',function(req,res){
   res.send('\
     <!doctype html>\
